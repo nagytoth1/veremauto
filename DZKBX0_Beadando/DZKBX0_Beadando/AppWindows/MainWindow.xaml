@@ -1,0 +1,33 @@
+﻿<Window x:Class="DZKBX0_Beadando.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DZKBX0_Beadando" xmlns:forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        mc:Ignorable="d"
+        Title="Szintaktikai elemző" Width="800" Height="600" MinWidth="700" MinHeight="500">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <DataGrid x:Name="dgSteps" Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="20" AutoGenerateColumns="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Input" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="State Stack" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Used rules" Width="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBlock Text="Kiértékelendő kifejezés:" Grid.Row="2" FontFamily="Consolas" FontSize="18" TextWrapping="WrapWithOverflow" Margin="20,146,160,86" Grid.RowSpan="2"/>
+        <TextBox x:Name="tBoxExpression" MaxLength="20" Grid.Row="3" Grid.ColumnSpan="2" Width="auto" Height="auto" Margin="170,10,225,100" FontSize="19" FontFamily="Consolas" Text="i+i*i alakú kifejezés" GotFocus="tBoxExpression_GotFocus" Foreground="Gray"></TextBox>
+        <TextBlock x:Name="tBlock1" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="30,65,30,10" FontSize="14" TextWrapping="WrapWithOverflow" FontFamily="Consolas" Foreground="DarkRed" FontWeight="DemiBold"></TextBlock>
+        <Button x:Name="butStart" Click="butStart_Click" Grid.Row="3" Grid.Column="1" Margin="120 10 40 95" Content="Mehet!" FontFamily="Consolas" FontSize="30" FontWeight="ExtraBlack"></Button>
+    </Grid>
+</Window>
