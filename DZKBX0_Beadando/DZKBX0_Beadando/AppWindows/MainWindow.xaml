@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DZKBX0_Beadando" xmlns:forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         mc:Ignorable="d"
-        Title="Szintaktikai elemző" Width="800" Height="600" MinWidth="700" MinHeight="500">
-    <Grid>
+        Title="Szintaktikai elemző" Width="800" Height="600" MinWidth="700" MinHeight="500" Icon="main_fav.ico">
+    <Window.Resources>
+        <Style x:Key="colheader" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#2f4f4f"/>
+            <Setter Property="Foreground" Value="Wheat"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Padding" Value="0, 5, 0, 5"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="datag1" TargetType="DataGrid">
+            <Setter Property="ColumnHeaderStyle" Value="{DynamicResource colheader}"></Setter>
+        </Style>
+        <Style x:Key="datag1_cell" TargetType="DataGridCell">
+            <Setter Property="Background" Value="#6d8484" />
+            <Setter Property="Foreground" Value="Wheat"/>
+            <Setter Property="BorderBrush" Value="#446161"/>
+            <Setter Property="FontSize" Value="13" />
+        </Style>
+    </Window.Resources>
+    <Grid Background="#829595">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*"></ColumnDefinition>
             <ColumnDefinition Width="4*"></ColumnDefinition>
@@ -18,16 +37,19 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="dgSteps" Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="20" AutoGenerateColumns="True">
+        <DataGrid x:Name="dgSteps" Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="20" AutoGenerateColumns="False" ItemsSource="{Binding}" Background="#597272" Style="{DynamicResource datag1}" CellStyle="{DynamicResource datag1_cell}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Input" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="State Stack" Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Used rules" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Input" Width="*" Binding="{Binding Path=input}"></DataGridTextColumn>
+                <DataGridTextColumn Header="State Stack" Width="*" Binding="{Binding Path=statestack}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Used Rules" Width="*" Binding="{Binding Path=usedrules}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock Text="Kiértékelendő kifejezés:" Grid.Row="2" FontFamily="Consolas" FontSize="18" TextWrapping="WrapWithOverflow" Margin="20,146,160,86" Grid.RowSpan="2"/>
-        <TextBox x:Name="tBoxExpression" MaxLength="20" Grid.Row="3" Grid.ColumnSpan="2" Width="auto" Height="auto" Margin="170,10,225,100" FontSize="19" FontFamily="Consolas" Text="i+i*i alakú kifejezés" GotFocus="tBoxExpression_GotFocus" Foreground="Gray"></TextBox>
-        <TextBlock x:Name="tBlock1" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="30,65,30,10" FontSize="14" TextWrapping="WrapWithOverflow" FontFamily="Consolas" Foreground="DarkRed" FontWeight="DemiBold"></TextBlock>
-        <Button x:Name="butStart" Click="butStart_Click" Grid.Row="3" Grid.Column="1" Margin="120 10 40 95" Content="Mehet!" FontFamily="Consolas" FontSize="30" FontWeight="ExtraBlack"></Button>
+        <TextBlock Text="Kiértékelendő &#10;kifejezés:" Grid.Row="3" FontFamily="Consolas" FontSize="18" TextWrapping="WrapWithOverflow" Height="auto" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,10,0,0" FontWeight="DemiBold"/>
+        <TextBox x:Name="tBoxExpression" MaxLength="20" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Left"  VerticalAlignment="Top" Padding="8" FontSize="19" FontFamily="Consolas" GotFocus="tBoxExpression_GotFocus" LostFocus="tBoxExpression_LostFocus" KeyDown="tBoxExpression_KeyDown" Foreground="#829595" Background="#d5dcdc" Margin="164,12,0,0"></TextBox>
+        <TextBlock x:Name="tBlock1" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="20,65,30,10" FontSize="14" TextWrapping="WrapWithOverflow" FontFamily="Consolas" Foreground="#800614" FontWeight="Black"></TextBlock>
+        <TextBlock x:Name="tBlock2" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="3" Padding="15" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="15" TextWrapping="WrapWithOverflow" FontFamily="Consolas" FontWeight="DemiBold"></TextBlock>
+        <Button x:Name="butStart" Click="butStart_Click" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5" Content="Mehet!" FontFamily="Consolas" FontSize="30" FontWeight="ExtraBlack" Margin="120,9,0,0" Background="#d5dcdc" Foreground="#2f4f4f"></Button>
+        <Button x:Name="butExit" Click="butExit_Click" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="10" BorderThickness="0" FontFamily="Consolas" FontSize="15" Content="Kilépés" Width="81" Background="#d5dcdc" Foreground="#2f4f4f" FontWeight="DemiBold" Grid.ColumnSpan="2" Margin="286,0,0,0"></Button>
+        <Button x:Name="butRestart" Click="butRestart_Click" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Bottom" Padding="10" BorderThickness="0" FontFamily="Consolas" FontSize="15" FontWeight="DemiBold"  Content="Újraindítás" Background="#d5dcdc" Foreground="#2f4f4f"></Button>
     </Grid>
 </Window>

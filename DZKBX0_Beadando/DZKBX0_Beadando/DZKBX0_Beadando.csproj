@@ -61,6 +61,7 @@
       <DependentUpon>FileUploaderWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Rule.cs" />
+    <Compile Include="RuleNotFound.cs" />
     <Compile Include="VeremAutomata.cs" />
     <Compile Include="Exceptions\WrongExpressionException.cs" />
     <Page Include="AppWindows\FileUploaderWindow.xaml">
@@ -79,10 +80,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Style\DataGrid.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -109,6 +106,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AppWindows\file_fav.ico" />
+    <Resource Include="AppWindows\main_fav.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

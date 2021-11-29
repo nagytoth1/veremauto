@@ -17,6 +17,7 @@ namespace DZKBX0_Beadando
         string defState;
         public FileUploaderWindow()
         {
+            this.Activate();
             InitializeComponent();
         }
 
@@ -39,7 +40,7 @@ namespace DZKBX0_Beadando
                 VeremAutomata.FileHandler(relativePath, out defState); //fájl beolvasása + szabálylista feltöltése
 
                 dgRules.ItemsSource = VeremAutomata.Rules;
-                tBlockResponse.Foreground = Brushes.ForestGreen;
+                tBlockResponse.Foreground = Brushes.PaleGreen;
                 tBlockResponse.Text = "Sikeres fájlbeolvasás!";
                 btnNext.IsEnabled = true;
             }
@@ -53,7 +54,7 @@ namespace DZKBX0_Beadando
         private void BtnNext_Click(object sender, RoutedEventArgs e)
         {
             new MainWindow(defState).Show();
-            this.Close();   
+            this.Close();
         }
     }
 }
