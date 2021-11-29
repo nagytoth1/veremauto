@@ -20,7 +20,7 @@
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
         </Style>
         <Style x:Key="datag1" TargetType="DataGrid">
-            <Setter Property="ColumnHeaderStyle" Value="{DynamicResource colheader}"></Setter>
+            <Setter Property="ColumnHeaderStyle" Value="{DynamicResource colheader}"/>
             <Setter Property="Background" Value="#829595"/>
         </Style>
         <Style x:Key="datag1_cell" TargetType="DataGridCell">
